@@ -1,0 +1,1 @@
+BookTitle: AlacakaranlıkBookWriter: Mert YılmazBookIsbn: 6596BookAmount: 50BooksBorrowed: 12

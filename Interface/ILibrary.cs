@@ -1,4 +1,5 @@
 ﻿using LibraryApplication.Class;
+using LibraryApplication.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,5 +27,8 @@ namespace LibraryApplication.Interface
 
 		//Return a book to library, returns true when successfully retorned
 		bool ReturnBook(Book book);
+
+		//Prints all books
+		void PrintBooks();
 	}
 }

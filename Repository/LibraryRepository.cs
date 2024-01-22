@@ -8,27 +8,48 @@ using System.Threading.Tasks;
 
 namespace LibraryApplication.Repository
 {
-	public class LibraryRepository : ILibrary
+	public abstract class LibraryRepository : ILibrary
 	{
+		protected List<Book> booksdb;
+		protected int bookcountdb;
 
 		public bool AddBook(Book newbook)
 		{
-			throw new NotImplementedException();
+			if (booksdb == null) return false;
+			booksdb.Add(newbook);
+			return true;
 		}
 
 		public bool BorrowBook(Book book)
 		{
-			throw new NotImplementedException();
+			if (booksdb == null) return false;
+			Book bookfounded = booksdb.FirstOrDefault(x => x == book);
+			bookfounded.booksBorrowed++;
+			return true;
 		}
 
 		public List<Book> GetBooks()
+		{
+			return booksdb;
+		}
+
+		public void PrintBooks()
 		{
 			throw new NotImplementedException();
 		}
 
 		public bool ReturnBook(Book book)
 		{
-			throw new NotImplementedException();
+			if (booksdb == null) return false;
+			Book bookfounded = booksdb.FirstOrDefault(x => x == book);
+			if (bookfounded.booksBorrowed > 0)
+			{
+				bookfounded.booksBorrowed--;
+				return true;
+			}
+
+			//Ther is no borrowed for this book
+			return false;
 		}
 
 		public Book SearchBookWithName(string bookname)

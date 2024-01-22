@@ -8,28 +8,37 @@ using System.Threading.Tasks;
 
 namespace LibraryApplication
 {
-	public class Program: LibraryRepository
+	public class Program
 	{
 
 		static void Main(string[] args)
 		{
 			PrintWelcomeMessage();
+			Library library = new Library();
+			Book book = new Book();
+			book.bookName = "Yüzüklerin efendisi";
+			book.bookWriter = "Ahmet Yılmaz";
+			book.bookIsbn = 4343;
+			book.booksBorrowed = 3;
+			book.bookAmount = 30;
+			Book book1 = new Book();
+			book1.bookName = "Alacakaranlık";
+			book1.bookWriter = "Mert Yılmaz";
+			book1.bookIsbn = 6596;
+			book1.booksBorrowed = 12;
+			book1.bookAmount = 50;
+			library.PrintBooks();
+			library.AddBook(book);
+			library.PrintBooks();
+			library.AddBook(book1);
+			library.PrintBooks();
+
 
 			bool isQuit = false;
-			List<Book> books = new List<Book>{
-				new Book { bookName = "Empati" ,bookAmount=11,bookIsbn=12345,booksBorrowed=2,bookWriter="Oğuzhan Ergün"},
-				new Book { bookName = "Olasılıksız" ,bookAmount=19,bookIsbn=54876,booksBorrowed=4,bookWriter="Ömer bal"}
-			};
-
-			while (!isQuit)
-			{
-				Console.ReadKey();
-				Console.WriteLine(books[0].bookName +" "+ books[0].bookAmount + " " + books[0].bookIsbn + " " + books[0].booksBorrowed + " " + books[0].bookWriter + "\n");
-				Console.ReadKey();
-				Console.WriteLine(books[1].bookName + " " + books[1].bookAmount + " " + books[1].bookIsbn + " " + books[1].booksBorrowed + " " + books[1].bookWriter + "\n");
-				Console.ReadKey();
-				isQuit = true;
-			}
+			//while (!isQuit)
+			//{
+			//	isQuit = true;
+			//}
 		}
 
 		private static void PrintWelcomeMessage()

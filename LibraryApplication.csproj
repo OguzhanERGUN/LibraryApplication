@@ -44,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Book.cs" />
+    <Compile Include="Class\Database.cs" />
+    <Compile Include="Interface\IDatabase.cs" />
     <Compile Include="Interface\ILibrary.cs" />
     <Compile Include="Class\Library.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DatabaseRepository.cs" />
     <Compile Include="Repository\LibraryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
