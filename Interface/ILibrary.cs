@@ -19,11 +19,11 @@ namespace LibraryApplication.Interface
 		//Search book in library with book name if the library does not containt book it returns null
 		Book SearchBookWithName(string bookname);
 
-		//Search book in library with book writer name if the library does not containt book it returns null
+		//Search book in library with book writer name if the library does not contains book it returns null
 		Book SearchBookWithWriter(string bookwriter);
 
 		//Borrow a book from the library, returns true when borrowed  successfully
-		bool BorrowBook(Book book);
+		bool BorrowBook(string bookname);
 
 		//Return a book to library, returns true when successfully retorned
 		bool ReturnBook(Book book);

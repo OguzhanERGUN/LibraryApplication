@@ -13,18 +13,29 @@ namespace LibraryApplication.Repository
 		protected List<Book> booksdb;
 		protected int bookcountdb;
 
-		public bool AddBook(Book newbook)
+        public LibraryRepository()
+        {
+            booksdb = new List<Book>();
+        }
+
+        public bool AddBook(Book newbook)
 		{
-			if (booksdb == null) return false;
-			booksdb.Add(newbook);
-			return true;
+			if (newbook == null) return false;
+			Book book = booksdb.FirstOrDefault(x => x.bookIsbn == newbook.bookIsbn);
+			if (book == null)
+			{
+				booksdb.Add(newbook);
+				return true; 
+			}
+			return false;
 		}
 
-		public bool BorrowBook(Book book)
+		public bool BorrowBook(string bookname)
 		{
-			if (booksdb == null) return false;
-			Book bookfounded = booksdb.FirstOrDefault(x => x == book);
+			Book bookfounded = booksdb.FirstOrDefault(x => x.bookName == bookname);
+			if (bookfounded == null || bookfounded.bookAmount == 0) return false;
 			bookfounded.booksBorrowed++;
+			bookfounded.bookAmount--;
 			return true;
 		}
 
@@ -35,15 +46,25 @@ namespace LibraryApplication.Repository
 
 		public void PrintBooks()
 		{
-			throw new NotImplementedException();
+			foreach (Book item in booksdb)
+			{
+				Console.WriteLine(
+					"Book Title: " + item.bookName + 
+					" Book Writer: " + item.bookWriter +
+					" Book ISBN: " + item.bookIsbn + 
+					" Book Count in Library: " + item.bookAmount +
+					" Book Borrowed :" + item.booksBorrowed);
+			}
+			Console.ReadKey();
 		}
 
 		public bool ReturnBook(Book book)
 		{
-			if (booksdb == null) return false;
+			if (book == null) return false;
 			Book bookfounded = booksdb.FirstOrDefault(x => x == book);
 			if (bookfounded.booksBorrowed > 0)
 			{
+				bookfounded.bookAmount++;
 				bookfounded.booksBorrowed--;
 				return true;
 			}
@@ -54,12 +75,18 @@ namespace LibraryApplication.Repository
 
 		public Book SearchBookWithName(string bookname)
 		{
-			throw new NotImplementedException();
+			Book bookfounded = booksdb.FirstOrDefault(x => x.bookName == bookname);
+			if (bookfounded == null) return null;
+			else return bookfounded;
+
 		}
 
 		public Book SearchBookWithWriter(string bookwriter)
 		{
-			throw new NotImplementedException();
+			Book bookfounded = booksdb.FirstOrDefault(x => x.bookWriter == bookwriter);
+			if (bookfounded == null) return null;
+			else return bookfounded;
 		}
+
 	}
 }
