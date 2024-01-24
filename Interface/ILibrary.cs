@@ -16,6 +16,9 @@ namespace LibraryApplication.Interface
 		//Get all books in library
 		List<Book> GetBooks();
 
+		//Get books that writen by a spesific writer in library
+		List<Book> GetBooksWithWriterName(string writername);
+
 		//Search book in library with book name if the library does not containt book it returns null
 		Book SearchBookWithName(string bookname);
 

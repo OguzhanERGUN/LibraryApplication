@@ -36,6 +36,7 @@ namespace LibraryApplication.Repository
 			if (bookfounded == null || bookfounded.bookAmount == 0) return false;
 			bookfounded.booksBorrowed++;
 			bookfounded.bookAmount--;
+			
 			return true;
 		}
 
@@ -44,16 +45,22 @@ namespace LibraryApplication.Repository
 			return booksdb;
 		}
 
+		public List<Book> GetBooksWithWriterName(string writername) 
+		{
+			List<Book> books = booksdb.FindAll(x => x.bookWriter == writername);
+			return books;
+		}
+
 		public void PrintBooks()
 		{
 			foreach (Book item in booksdb)
 			{
 				Console.WriteLine(
-					"Book Title: " + item.bookName + 
-					" Book Writer: " + item.bookWriter +
-					" Book ISBN: " + item.bookIsbn + 
-					" Book Count in Library: " + item.bookAmount +
-					" Book Borrowed :" + item.booksBorrowed);
+					"Kitap Başlığı: " + item.bookName + "\n" +
+					"Kitabın Yazarı: " + item.bookWriter + "\n" +
+					"Kitabın ISBN Kodu: " + item.bookIsbn + "\n" +
+					"Kütüphanedeki adet sayısı: " + item.bookAmount + "\n" +
+					"Ödünç verilmiş kitap sayısı: " + item.booksBorrowed + "\n" + "-----------------------");
 			}
 			Console.ReadKey();
 		}
