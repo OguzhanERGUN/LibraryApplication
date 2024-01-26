@@ -32,11 +32,11 @@ namespace LibraryApplication.Repository
 
 		public bool BorrowBook(string bookname)
 		{
-			Book bookfounded = booksdb.FirstOrDefault(x => x.bookName == bookname);
+			Book bookfounded = booksdb.FirstOrDefault(x => x.bookName.ToLower() == bookname.ToLower());
 			if (bookfounded == null || bookfounded.bookAmount == 0) return false;
+
 			bookfounded.booksBorrowed++;
 			bookfounded.bookAmount--;
-			
 			return true;
 		}
 
@@ -47,12 +47,13 @@ namespace LibraryApplication.Repository
 
 		public List<Book> GetBooksWithWriterName(string writername) 
 		{
-			List<Book> books = booksdb.FindAll(x => x.bookWriter == writername);
+			List<Book> books = booksdb.FindAll(x => x.bookWriter.ToLower() == writername.ToLower());
 			return books;
 		}
 
 		public void PrintBooks()
 		{
+			Console.Clear();
 			foreach (Book item in booksdb)
 			{
 				Console.WriteLine(
@@ -82,7 +83,7 @@ namespace LibraryApplication.Repository
 
 		public Book SearchBookWithName(string bookname)
 		{
-			Book bookfounded = booksdb.FirstOrDefault(x => x.bookName == bookname);
+			Book bookfounded = booksdb.FirstOrDefault(x => x.bookName.ToLower() == bookname.ToLower());
 			if (bookfounded == null) return null;
 			else return bookfounded;
 
@@ -90,7 +91,14 @@ namespace LibraryApplication.Repository
 
 		public Book SearchBookWithWriter(string bookwriter)
 		{
-			Book bookfounded = booksdb.FirstOrDefault(x => x.bookWriter == bookwriter);
+			Book bookfounded = booksdb.FirstOrDefault(x => x.bookWriter.ToLower() == bookwriter.ToLower());
+			if (bookfounded == null) return null;
+			else return bookfounded;
+		}
+
+		public Book SearchBookWithIsbn(int ısbncode)
+		{
+			Book bookfounded = booksdb.FirstOrDefault(x => x.bookIsbn == ısbncode);
 			if (bookfounded == null) return null;
 			else return bookfounded;
 		}

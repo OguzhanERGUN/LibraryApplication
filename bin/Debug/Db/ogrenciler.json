@@ -1,0 +1,54 @@
+{
+  "library": {
+    "Books": [
+      {
+        "bookName": "1984",
+        "bookWriter": "George Orwell",
+        "bookIsbn": 1,
+        "bookAmount": 24,
+        "booksBorrowed": 0
+      },
+      {
+        "bookName": "Baba",
+        "bookWriter": "Mario Puzo",
+        "bookIsbn": 2,
+        "bookAmount": 63,
+        "booksBorrowed": 1
+      },
+      {
+        "bookName": "Harry Potter ve Felsefe Taşı",
+        "bookWriter": "J. K. Rowling",
+        "bookIsbn": 1233,
+        "bookAmount": 20,
+        "booksBorrowed": 0
+      },
+      {
+        "bookName": "Hobbit",
+        "bookWriter": "George Orwell",
+        "bookIsbn": 1285,
+        "bookAmount": 63,
+        "booksBorrowed": 1
+      },
+      {
+        "bookName": "Da Vinci Şifresi",
+        "bookWriter": "Dan Brown",
+        "bookIsbn": 962,
+        "bookAmount": 8,
+        "booksBorrowed": 0
+      }
+    ],
+    "booksCount": 0
+  },
+  "booksBorrowed": [
+    {
+      "bookId": 0,
+      "bookIsbn": 1285,
+      "bookBorrowedDate": "2024-01-26T00:00:00+03:00"
+    },
+    {
+      "bookId": 0,
+      "bookIsbn": 2,
+      "bookBorrowedDate": "2024-01-26T00:00:00+03:00"
+    }
+  ]
+}

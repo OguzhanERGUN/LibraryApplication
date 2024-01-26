@@ -5,3 +5,6 @@ D:\C#Console\LibraryApplication\obj\Debug\LibraryApplication.csproj.AssemblyRefe
 D:\C#Console\LibraryApplication\obj\Debug\LibraryApplication.csproj.CoreCompileInputs.cache
 D:\C#Console\LibraryApplication\obj\Debug\LibraryApplication.exe
 D:\C#Console\LibraryApplication\obj\Debug\LibraryApplication.pdb
+D:\C#Console\LibraryApplication\bin\Debug\Newtonsoft.Json.dll
+D:\C#Console\LibraryApplication\bin\Debug\Newtonsoft.Json.xml
+D:\C#Console\LibraryApplication\obj\Debug\LibraryApplication.csproj.CopyComplete

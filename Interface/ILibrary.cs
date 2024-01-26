@@ -22,6 +22,9 @@ namespace LibraryApplication.Interface
 		//Search book in library with book name if the library does not containt book it returns null
 		Book SearchBookWithName(string bookname);
 
+		//Search book in library with book ISBN if the library does not containt book it returns null
+		Book SearchBookWithIsbn(int ısbncode);
+
 		//Search book in library with book writer name if the library does not contains book it returns null
 		Book SearchBookWithWriter(string bookwriter);
 

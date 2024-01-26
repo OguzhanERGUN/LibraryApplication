@@ -13,13 +13,6 @@ namespace LibraryApplication.Class
         public int bookIsbn { get; set; }
         public int bookAmount { get; set; }
         public int booksBorrowed { get; set; }
-        public Dictionary<int, Book> borrowedBook;
-
-
-        public Book()
-        {
-            borrowedBook = new Dictionary<int, Book>();
-        }
 
     }
 }
