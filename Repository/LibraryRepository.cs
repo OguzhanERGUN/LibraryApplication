@@ -53,6 +53,7 @@ namespace LibraryApplication.Repository
 
 		public void PrintBooks()
 		{
+			Console.Out.Flush();
 			Console.Clear();
 			foreach (Book item in booksdb)
 			{

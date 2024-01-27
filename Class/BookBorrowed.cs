@@ -8,7 +8,6 @@ namespace LibraryApplication.Class
 {
 	public class BookBorrowed
 	{
-		
 		public int bookId;
 		public int bookIsbn;
 		public DateTime bookBorrowedDate;

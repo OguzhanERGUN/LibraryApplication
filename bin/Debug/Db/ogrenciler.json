@@ -35,20 +35,61 @@
         "bookIsbn": 962,
         "bookAmount": 8,
         "booksBorrowed": 0
+      },
+      {
+        "bookName": "Nutuk",
+        "bookWriter": "Mustafa Kemal Atatürk",
+        "bookIsbn": 12356,
+        "bookAmount": 1,
+        "booksBorrowed": 2
+      },
+      {
+        "bookName": "Olasılıksız",
+        "bookWriter": "Adam Fawer",
+        "bookIsbn": 6598,
+        "bookAmount": 1,
+        "booksBorrowed": 1
+      },
+      {
+        "bookName": "Empati",
+        "bookWriter": "Adam Fawer",
+        "bookIsbn": 7536,
+        "bookAmount": 4,
+        "booksBorrowed": 1
       }
     ],
     "booksCount": 0
   },
   "booksBorrowed": [
     {
-      "bookId": 0,
-      "bookIsbn": 1285,
-      "bookBorrowedDate": "2024-01-26T00:00:00+03:00"
+      "bookId": 1,
+      "bookIsbn": 12356,
+      "bookBorrowedDate": "2024-01-27T00:00:00+03:00"
     },
     {
-      "bookId": 0,
+      "bookId": 2,
       "bookIsbn": 2,
-      "bookBorrowedDate": "2024-01-26T00:00:00+03:00"
+      "bookBorrowedDate": "2024-01-27T00:00:00+03:00"
+    },
+    {
+      "bookId": 3,
+      "bookIsbn": 6598,
+      "bookBorrowedDate": "2024-01-27T00:00:00+03:00"
+    },
+    {
+      "bookId": 6,
+      "bookIsbn": 12356,
+      "bookBorrowedDate": "2024-01-27T00:00:00+03:00"
+    },
+    {
+      "bookId": 7,
+      "bookIsbn": 1285,
+      "bookBorrowedDate": "2024-01-27T00:00:00+03:00"
+    },
+    {
+      "bookId": 8,
+      "bookIsbn": 7536,
+      "bookBorrowedDate": "2024-01-27T00:00:00+03:00"
     }
   ]
 }

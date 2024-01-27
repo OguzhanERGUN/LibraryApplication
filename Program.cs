@@ -14,28 +14,36 @@ namespace LibraryApplication
 {
 	public class Program
 	{
-
+		const string quitApp = "0";
+		const string listAllBooks = "1";
+		const string addBookToLibrary = "2";
+		const string tryBorrowBook = "3";
+		const string tryReturnBook = "4";
+		const string searchByTitle = "5";
+		const string searchByWriterName = "6";
+		const string listAllBorrowedBooks = "7";
 		static void Main(string[] args)
 		{
 			//Veri tabanı mevcut solution altındaki bin/Debug/Db/ogrenciler.json uzantısında bulunuyor
-			Database database = GetDatabaseValues(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Db", "ogrenciler.json"));
+			Database dataBase = GetDatabaseValues(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Db", "ogrenciler.json"));
 			bool isQuit = false;
 			PrintWelcomeMessage();
-			Library library = database.library;
-			List<BookBorrowed> booksBorrowed = database.booksBorrowed;
+			Library library = dataBase.library;
+			List<BookBorrowed> booksBorrowed = dataBase.booksBorrowed;
 
 			while (!isQuit)
 			{
+				ClearAllConsole();
 				string process = GetProcessValue();
 				switch (process)
 				{
-					case "0":
+					case quitApp:
 						isQuit = true;
 						break;
-					case "1":
+					case listAllBooks:
 						library.PrintBooks();
 						break;
-					case "2":
+					case addBookToLibrary:
 						Book newbook = new Book();
 						Console.WriteLine("Eklenecek kitabın adını giriniz");
 						newbook.bookName = Console.ReadLine();
@@ -71,8 +79,7 @@ namespace LibraryApplication
 							"girilen ISBN kodunun doğru olduğundan emin olun (Daha önce kullanılmış kodu tekrar kullanamazsınız)");
 						Console.ReadKey();
 						break;
-					case "3":
-						Console.Clear();
+					case tryBorrowBook:
 						Console.WriteLine("Lütfen ödünç almak istediğiniz kitabın adını giriniz");
 						string borrowbook = Console.ReadLine();
 						if (library.BorrowBook(borrowbook))
@@ -89,7 +96,7 @@ namespace LibraryApplication
 							bookBorrowed.bookIsbn = library.SearchBookWithName(borrowbook).bookIsbn;
 							bookBorrowed.bookBorrowedDate = DateTime.Today;
 							booksBorrowed.Add(bookBorrowed);
-							Console.WriteLine("Kitap başarıyla ödünç alındı, kitabı " + bookBorrowed.bookId + " koduyla teslim edebilirsiniz");
+							Console.WriteLine("Kitap başarıyla ödünç alındı, teslim süreniz 3 gündür. Kitabı " + bookBorrowed.bookId + " koduyla teslim edebilirsiniz");
 						}
 						else
 						{
@@ -97,7 +104,7 @@ namespace LibraryApplication
 						}
 						Console.ReadKey();
 						break;
-					case "4":
+					case tryReturnBook:
 						Console.Clear();
 						Console.WriteLine("İade edilecek kitabın iade kodunu giriniz.");
 						string returnbook = Console.ReadLine();
@@ -118,7 +125,7 @@ namespace LibraryApplication
 						}
 						Console.ReadKey();
 						break;
-					case "5":
+					case searchByTitle:
 						Console.Clear();
 						Console.WriteLine("Kitabın adını giriniz.");
 						string bookname = Console.ReadLine();
@@ -139,7 +146,7 @@ namespace LibraryApplication
 						}
 						Console.ReadKey();
 						break;
-					case "6":
+					case searchByWriterName:
 						Console.Clear();
 						Console.WriteLine("Yazarın adını giriniz");
 						string writername = Console.ReadLine();
@@ -163,8 +170,7 @@ namespace LibraryApplication
 						}
 						Console.ReadKey();
 						break;
-					case "7":
-						Console.Clear();
+					case listAllBorrowedBooks:
 						if (booksBorrowed.Count == 0)
 						{
 							Console.WriteLine("Kütüphaneden ödünç alınmış bir kitap bulunmuyor");
@@ -189,11 +195,13 @@ namespace LibraryApplication
 						PrintErrorMessage();
 						break;
 				}
+				Console.Clear();
+			
 			}
 
-			database.library = library;
-			database.booksBorrowed = booksBorrowed;
-			UpdateDatabase(database);
+			dataBase.library = library;
+			dataBase.booksBorrowed = booksBorrowed;
+			UpdateDatabase(dataBase);
 		}
 
 		private static void PrintWelcomeMessage()
@@ -215,7 +223,7 @@ namespace LibraryApplication
 				"Kitap ismi ile arama yapmak için -> '5'\n" +
 				"Kitap yazarı ile arama yapmak için -> '6'\n" +
 				"Ödünç alınan kitapları görüntülemek için -> '7'\n" +
-				"Çıkış yapmak için -> '0'\n");
+				"Değişiklikleri kaydetmek ve çıkış yapmak için -> '0'\n");
 			string process = Console.ReadLine();
 			Console.Clear();
 			return process;
@@ -239,6 +247,10 @@ namespace LibraryApplication
 				return JsonConvert.DeserializeObject<Database>(json);
 			}
 			else return new Database();
+		}
+		private static void ClearAllConsole()
+		{
+			Console.Clear(); Console.WriteLine("\x1b[3J");
 		}
 
 	}
